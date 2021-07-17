@@ -71,7 +71,7 @@ int main()
 	{
 		system("cls");
 		textcolor(8);
-		printf("			     Array as an ADT\n");
+		printf("		Array as an ADT -Written by Suman Dhungana\n");
 		textcolor(7);
 		 printf(" _______________________________________________________________________\n");
 		printf("|									|\n");
@@ -159,11 +159,11 @@ int main()
 				    printf("------------MODIFYING ELEMENT------------\n");
 				    option=choseArray();
 				    textcolor(1);
-				    printf("\nEnter the element you wanna replace:");
+				    printf("\nEnter the element you want to replace:");
 				    textcolor(7);
 				    scanf("%d",&oElement);
 				    textcolor(1);
-				    printf("\nEnter the element you wanna replace %d by:",oElement);
+				    printf("\nEnter the element you want to replace %d by:",oElement);
 				    textcolor(7);
 				    scanf("%d",&nElement);
 				    if(option==1)
@@ -212,7 +212,7 @@ int main()
         			merge2=choseArray();
         			textcolor(12);
         			printf("\nMerging Array %d & Array %d into another Array will result in the lose of data of that Array.",merge1,merge2);
-        			printf("\nAre You Sure You Wanna Proceed?(Y/N):");
+        			printf("\nAre You Sure You want to Proceed?(Y/N):");
         			ch=getch();
         			if (ch=='Y'||ch=='y')
         			{
@@ -363,7 +363,7 @@ void delete(struct myArray * a,int element)
 			//lenDecr--;
 			a->alloSize--;
 			textcolor(12);
-			printf("Successfully deleted %d element from %d index.\n\n",element,index);
+			printf("Successfully deleted element [%d] from %d index.\n\n",element,index);
 		}
 		finalIndex=index+1;
 	}
@@ -408,7 +408,7 @@ void travels(struct myArray * a)
 		if (a->totalSize==0)
 		{
 			textcolor(6);
-			printf("Do you wanna create an array?(Y/N):");
+			printf("Do you want to create an array?(Y/N):");
 			createArray=getch();
 			if (createArray=='Y'||createArray=='y')
 			{
