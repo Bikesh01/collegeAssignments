@@ -1,6 +1,6 @@
-#Array as an ADT
+Array as an ADT
 
-Alt-##Description
+Description
 ADT stands for Abstract Data Type.
 Arrays are ADT’s because they are capable of holding contiguous elements in the same order. And they allow access for the specific element via index.
 
