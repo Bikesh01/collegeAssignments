@@ -207,24 +207,25 @@ int main()
         			printf("\n			___________\n");
         			merge1=choseArray();
         			textcolor(5);
-        			printf("\n			Merge That");
+        			printf("\n			With This");
         			printf("\n			___________\n");
         			merge2=choseArray();
         			textcolor(12);
         			printf("\nMerging Array %d & Array %d into another Array will result in the lose of data of that Array.",merge1,merge2);
-        			printf("\nAre You Sure You want to Proceed?(Y/N):");
+        			printf("\nAre You Sure You Want To Proceed?(Y/N):");
         			ch=getch();
+        			textcolor(7);
         			if (ch=='Y'||ch=='y')
         			{
         				if(merge1==1 || merge1==2 && merge2==2 || merge2==1)
 						{
 							merge(&arr[0],&arr[1],&arr[2]);
 						}
-						if(merge1==2 || merge1==3 && merge2==3 || merge2==2)
+						else if(merge1==2 || merge1==3 && merge2==3 || merge2==2)
 						{
 							merge(&arr[1],&arr[2],&arr[0]);
 						}
-						if(merge1==1 || merge1==3 && merge2==3 || merge2==1)
+						else if(merge1==1 || merge1==3 && merge2==3 || merge2==1)
 						{
 							merge(&arr[0],&arr[2],&arr[1]);
 						}
@@ -351,11 +352,12 @@ void delete(struct myArray * a,int element)
 {
 	//int lenDecr;
 	//lenDecr=a->alloSize;
-	int finalIndex;
+	int dCount=0;
 	for(int index = 0; index < a->alloSize; index++)
 	{
 		if (a->ptr[index]==element)	//Searches the array for the element
 		{
+			dCount++;
 			for (int i = index; i < a->alloSize-1; i++)
 			{
 				a->ptr[i]=a->ptr[i+1];	//Changes the element position/index to the left by one
@@ -365,9 +367,8 @@ void delete(struct myArray * a,int element)
 			textcolor(12);
 			printf("Successfully deleted element [%d] from %d index.\n\n",element,index);
 		}
-		finalIndex=index+1;
 	}
-	if(finalIndex>=a->alloSize)
+	if(dCount==0)
 	{
 		textcolor(12);
 		printf("Error occured!\n");
@@ -431,41 +432,43 @@ void travels(struct myArray * a)
 void merge(struct myArray *a, struct myArray *b, struct myArray *c)
 {
 	int i=0,j=0,k=0;
-	c->totalSize = a->totalSize + b -> totalSize;
+	c->totalSize = a->totalSize + b->totalSize;
     c->alloSize = a->alloSize + b->alloSize;
     if (a->totalSize!=0 || b->totalSize!=0)
     {
-    	while(i<a->alloSize && j<a->alloSize)
+    	while(i<a->alloSize && j<b->alloSize)
     	{
-    		if(a->ptr[i]<=b->ptr[j])
+    		if(a->ptr[i] < b->ptr[j])
     		{
 	            c->ptr[k]=a->ptr[i];
 	            i++;
 	            k++;
 			}
-	        if(a->ptr[i]>=b->ptr[j])
+	        else
 	        {
 	            c->ptr[k] = b->ptr[j];
 	            j++;
 	            k++;
 	    	}
 	    }
-	    for(;i<a->alloSize;i++)
+	    while(i<a->alloSize)
 	    {
-	        c->ptr[k++]=a->ptr[i];
+	    	printf("i=%d",i);
+	        c->ptr[k++]=a->ptr[i++];
 	    }
-	    for(;j<b->alloSize;j++)
+	    while(j<a->alloSize)
 	    {
-	        c->ptr[k++]=b->ptr[j];
+	    	printf("j=%d",j);
+	        c->ptr[k++]=b->ptr[j++];
 		}
 		textcolor(2);
-		printf("Merge Successful.\n");
-		travels(c);   
+		printf("\nMerge Successful.\n"); 
+		travels(c);  
 	}
 	else
 	{
 		textcolor(12);
-		printf("Error occured!\n");
+		printf("\nError occured!\n");
 		textcolor(8);
 		printf("First Array:\n");
 		printf("Total Size:%d\nUsed Size:%d\nFree size:%d\n\n",a->totalSize,a->alloSize,a->totalSize - a->alloSize);
